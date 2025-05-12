@@ -50,7 +50,7 @@
                     </h1>
                     <div class="block-2__media">
                         <picture class="ui-picture">
-                            <img class="ui-picture__img ui-picture__img--cover" src="img/demo-img-1.png" alt="">
+                            <img class="ui-picture__img ui-picture__img--cover" src="img/block-2.png" alt="">
                         </picture>
                     </div>
                     <strong class="block-2__subtitle t t--2">
@@ -77,8 +77,9 @@
                         </div>
                         <div class="block-3__media block-3__media--video">
                             <div class="ui-video">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" autoplay muted playsinline>
-                                    <source src="video/tetris.mp4" type="video/mp4">
+                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" autoplay loop muted playsinline>
+                                    <source src="video/unboxing.webm" type="video/webm">
+                                    <source src="video/unboxing.mp4" type="video/mp4">
                                 </video>
                             </div>
                         </div>
@@ -92,8 +93,9 @@
                         </div>
                         <div class="block-3__media block-3__media--video">
                             <div class="ui-video">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" autoplay muted playsinline>
-                                    <source src="video/tetris.mp4" type="video/mp4">
+                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" autoplay loop muted playsinline>
+                                    <source src="video/review.webm" type="video/webm">
+                                    <source src="video/review.mp4" type="video/mp4">
                                 </video>
                             </div>
                         </div>
@@ -107,8 +109,9 @@
                         </div>
                         <div class="block-3__media block-3__media--video">
                             <div class="ui-video">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" autoplay muted playsinline>
-                                    <source src="video/tetris.mp4" type="video/mp4">
+                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" autoplay loop muted playsinline>
+                                    <source src="video/feedback.webm" type="video/webm">
+                                    <source src="video/feedback.mp4" type="video/mp4">
                                 </video>
                             </div>
                         </div>
@@ -122,8 +125,9 @@
                         </div>
                         <div class="block-3__media block-3__media--video">
                             <div class="ui-video">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" autoplay muted playsinline>
-                                    <source src="video/tetris.mp4" type="video/mp4">
+                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" autoplay loop muted playsinline>
+                                    <source src="video/before-after.webm" type="video/webm">
+                                    <source src="video/before-after.mp4" type="video/mp4">
                                 </video>
                             </div>
                         </div>
@@ -137,8 +141,9 @@
                         </div>
                         <div class="block-3__media block-3__media--video">
                             <div class="ui-video">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" autoplay muted playsinline>
-                                    <source src="video/tetris.mp4" type="video/mp4">
+                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" autoplay loop muted playsinline>
+                                    <source src="video/using-product.webm" type="video/webm">
+                                    <source src="video/using-product.mp4" type="video/mp4">
                                 </video>
                             </div>
                         </div>
@@ -1138,7 +1143,9 @@
             },
             breakpoints: {
                 768: {
-                    spaceBetween: 8
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                    pagination: false
                 }
             }
         });
