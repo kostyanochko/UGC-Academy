@@ -384,8 +384,8 @@ img {
 
 .block-4__picture{
     display: block;
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     margin-bottom: 8px;
 }
 
@@ -987,6 +987,7 @@ strong {
     flex-shrink: 0;
     border-radius: 20px;
     overflow: hidden;
+    aspect-ratio: 16 / 9;
 }
 
 .block-9__slider-text{
@@ -1005,6 +1006,16 @@ strong {
 
 .block-9__slider-description{
     color: var(--text-secondary-color);
+}
+
+.block-9__item{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.block-9__item:not(:last-child){
+    margin-bottom: 24px;
 }
 
 .block-10__block{
@@ -1067,7 +1078,7 @@ strong {
 .block-11__picture {
     width: 180px;
     height: 180px;
-    margin-bottom: 24px;
+    margin-bottom: 0px;
     overflow: hidden;
     border-radius: 12px;
 }
