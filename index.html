@@ -5,10 +5,291 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content= "width=device-width, initial-scale=1, user-scalable=no">
     <link rel="icon" href="img/icon.webp" type="image/webp">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preload" href="img/block-1.webp" as="image">
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+    <link rel="preload" href="img/block-1.webp" as="image" importance="high">
     <link rel="preconnect" href="https://unpkg.com">
     <title>UGC Academy</title>
+    <style>
+        /* BASE STYLES (Mobile-first) */
+        :root {
+          --bg-main-color: #fff;
+          --bg-secondary-color: #f1f1f1;
+          --text-main-color: #000;
+          --text-alt-color: rgb(255, 255, 255);
+          --accent-brand-color: #8edb29;
+        }
+        
+        *, ::after, ::before {
+          box-sizing: border-box;
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* HEADER STYLES */
+        .header {
+            width: 100%;
+        }
+        
+        .header__wrapper {
+            display: grid;
+            grid-gap: 2px 10px;
+            grid-template-columns: 84px auto;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 13px;
+            padding-bottom: 13px;
+        }
+        
+        .header__logo {
+            grid-row: 1 / 3;
+            text-align: center;
+        }
+
+        .header__logo p{
+            font-weight: 700;
+        }
+        
+        .header__text {
+            grid-row: 1 / 3;
+            text-align: right;
+            font-size: 16px;
+            line-height: 22px;
+        }
+        
+        /* HERO SECTION (block-1) */
+        .block-1 {
+          padding: 32px 0;
+          padding-top: 0;
+        }
+        
+        .block-1__block {
+            position: relative;
+            margin-right: 4px;
+            margin-left: 4px;
+            padding-top: 48px;
+            padding-bottom: 20px;
+            border-radius: 20px;
+            color: var(--text-main-color);
+            background-color: var(--bg-secondary-color);
+            overflow: hidden;
+        }
+        
+        .block-1__wrapper {
+            display: grid;
+            grid-template-rows: auto auto 1fr;
+            grid-template-columns: 1fr;
+            padding-bottom: 32px;
+        }
+        
+        .block-1__title {
+            grid-row: 1 / 2;
+            grid-column: 1 / 2;
+            margin-bottom: 16px;
+            font-size: 24px;
+            line-height: 28px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .block-1__subtitle {
+            display: block;
+            grid-row: 2 / 3;
+            grid-column: 1 / 2;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        
+        /* SUBMIT BUTTON BAR */
+        .submit__bar {
+            position: fixed;
+            z-index: 2;
+            box-shadow: 0 0 2px rgba(0, 0, 0, .08), 0 4px 16px rgba(0, 0, 0, .08);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 8px 20px 20px;
+            border-radius: 20px 20px 0 0;
+            transition: .3s ease;
+            will-change: transform;
+            background-color: var(--bg-secondary-color);
+            box-sizing: border-box;
+            transition: transform 0.3s ease-out;
+        }
+        
+        .submit__button {
+            width: auto;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 17px 32px;
+            padding-left: 8px;
+            padding-right: 8px;
+            border-radius: 12px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-alt-color);
+            background-color: var(--accent-brand-color);
+        }
+        
+        .block-1__pic {
+            position: relative;
+            width: calc(100% + 32px);
+            height: unset;
+            grid-row: 3 / 4;
+            grid-column: 1 / 2;
+            margin: 0 -16px -64px;
+        }
+        
+        .block-1__pic img {
+          width: 100%;
+          height: auto;
+          display: block;
+          object-fit: cover;
+        }
+        
+        @media (max-width: 1023.9px) {
+            .ui-container {
+                padding-right: 20px;
+                padding-left: 20px;
+            }
+            .header__text {
+                max-width: 185px;
+            }
+            .block-1__wrapper {
+                position: relative;
+                padding-right: 16px;
+                padding-left: 16px;
+            }
+            .block-1__title {
+                text-align: center;
+            }
+            .block-1__pic {
+                margin: 0 -16px -64px;
+                padding-top: 99%; 
+            }
+            .block-1__pic img {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .ui-container {
+                width: 928px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .block {
+                padding: 80px 0;
+            }
+
+            .block--default{
+                padding-top: 20px;
+            }
+
+            .header__wrapper {
+                padding: 28px 28px;
+                grid-template-columns: 130px auto;
+            }
+
+            .header__logo{
+                font-size: 30px;
+                line-height: 32px;
+            }
+
+            .header__text {
+                max-width: none;
+                text-align: right;
+                font-size: 22px;
+            }
+
+            .block-1__block{
+                padding-bottom: 36px;
+                border-radius: 32px;
+            }
+
+            .block-1__wrapper{
+                padding-bottom: 0;
+            }
+            .block-1__title {
+                grid-row: 2 / 3;
+                margin-bottom: 0;
+                text-align: left;
+            }
+
+            .block-1__subtitle {
+                grid-row: 1 / 2;
+                margin-bottom: 24px;
+                text-align: left;
+            }
+
+            .block-1__pic {
+                margin: 0 auto 0;
+                max-width: 800px;
+            }
+
+            .block-2__wrapper{
+                display: grid;
+                grid-column-gap: 48px;
+                grid-template-rows: auto 1fr;
+                grid-template-columns: 432px 1fr;
+            }
+        }
+    
+        @media (min-width: 1280px) {
+            .block-1__block{
+                max-width: 968px;
+                margin: 0 auto;
+            }
+
+            .block-1__wrapper{
+                grid-template-columns: 450px 297px 1fr;
+            }
+
+            .block-1__title {
+                font-size: 42px;
+                line-height: 48px;
+                grid-column: 1 / 2;
+                margin-bottom: 72px;
+            }
+
+            .block-1__subtitle{
+                grid-column: 1 / 3;
+                margin-top: 12px;
+            }
+
+            .submit__bar{
+                grid-row: 3 / 4;
+                grid-column: 1 / 2;
+                align-self: flex-start;
+                margin-bottom: 40px;
+                position: relative;
+                border-radius: 20px;
+                padding: 12px;
+            }
+
+            .block-1__pic {
+                grid-row: 2 / -1;
+                grid-column: 2 / -1;
+                align-self: flex-start;
+                justify-self: flex-end;
+                margin-right: -116px;
+                margin-bottom: 0;
+                margin-right: 0;
+                margin-left: 0;
+                width: 484px;
+                height: auto;
+            }
+        }
+        </style>
 </head>
 <body>
     <div class="header">
@@ -39,7 +320,7 @@
                         </a>
                     </div>
                     <picture class="block-1__pic ui-picture">
-                        <img class="ui-picture__img ui-picture__img--cover" src="img/block-1.webp" alt="">
+                        <img class="ui-picture__img ui-picture__img--cover" src="img/block-1.webp" alt="" fetchpriority="high">
                     </picture>
                 </div>
             </div>
@@ -692,7 +973,7 @@
                         <li class="slider__item swiper-slide-visible slider__item--active swiper-slide" role="group" aria-label="1 / 3">
                             <div class="block-9__slider-media">
                                 <div class="ui-video">
-                                    <video class="ui-video__media ui-video__media--cover"  width="280" height="158" poster="video/preview/slider-begginer.webp" controlslist="nodownload" autoplay loop muted playsinline>
+                                    <video class="ui-video__media ui-video__media--cover" preload="none" width="280" height="158" poster="video/preview/slider-begginer.webp" controlslist="nodownload" autoplay loop muted playsinline>
                                         <source src="video/slider-begginer.webm" type="video/webm">
                                         <source src="video/slider-begginer.mp4" type="video/mp4">
                                     </video>
@@ -710,7 +991,7 @@
                         </li>
                         <li class="slider__item swiper-slide-visible slider__item--active swiper-slide" role="group" aria-label="2 / 3">
                             <div class="block-9__slider-media">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" poster="video/preview/slider-middle.webp" controlslist="nodownload" autoplay loop muted playsinline>
+                                <video class="ui-video__media ui-video__media--cover" preload="none" width="280" height="158" poster="video/preview/slider-middle.webp" controlslist="nodownload" autoplay loop muted playsinline>
                                     <source src="video/slider-middle.webm" type="video/webm">
                                     <source src="video/slider-middle.mp4" type="video/mp4">
                                 </video>
@@ -727,7 +1008,7 @@
                         </li>
                         <li class="slider__item swiper-slide-visible slider__item--active swiper-slide" role="group" aria-label="3 / 3">
                             <div class="block-9__slider-media">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" poster="video/preview/slider-pro.webp" controlslist="nodownload" autoplay loop muted playsinline>
+                                <video class="ui-video__media ui-video__media--cover" preload="none" width="280" height="158" poster="video/preview/slider-pro.webp" controlslist="nodownload" autoplay loop muted playsinline>
                                     <source src="video/slider-pro.webm" type="video/webm">
                                     <source src="video/slider-pro.mp4" type="video/mp4">
                                 </video>
@@ -1111,13 +1392,11 @@
             </div>
         </div>
     </footer>
-    <script src="js/block-6.js"></script>
-    <script src="js/block-8.js"></script>
-    <script src="js/form.js"></script>
+    <script src="js/block-6.js" defer></script>
+    <script src="js/block-8.js" defer></script>
+    <script src="js/form.js" defer></script>
     <script src="js/submit-btn.js"></script>
-    <script type="module" src="js/block-11.js"></script>
-    <script type="module" src="js/timer.js"></script>
-    <script type="module" src="js/timerBase.js"></script>
+    <script type="module" src="js/block-11.js" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
