@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content= "width=device-width, initial-scale=1, user-scalable=no">
     <link rel="icon" href="img/icon.webp" type="image/webp">
-    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+    <link rel="preload" href="css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.min.css"></noscript>
     <link rel="preload" href="img/block-1.webp" as="image" importance="high">
     <link rel="preconnect" href="https://unpkg.com">
     <title>UGC Academy</title>
     <style>
-        /* BASE STYLES (Mobile-first) */
         :root {
           --bg-main-color: #fff;
           --bg-secondary-color: #f1f1f1;
@@ -29,7 +28,6 @@
             width: 100%;
         }
         
-        /* HEADER STYLES */
         .header {
             width: 100%;
         }
@@ -60,7 +58,6 @@
             line-height: 22px;
         }
         
-        /* HERO SECTION (block-1) */
         .block-1 {
           padding: 32px 0;
           padding-top: 0;
@@ -103,7 +100,6 @@
             text-align: center;
         }
         
-        /* SUBMIT BUTTON BAR */
         .submit__bar {
             position: fixed;
             z-index: 2;
@@ -320,7 +316,7 @@
                         </a>
                     </div>
                     <picture class="block-1__pic ui-picture">
-                        <img class="ui-picture__img ui-picture__img--cover" src="img/block-1.webp" alt="" fetchpriority="high">
+                        <img class="ui-picture__img ui-picture__img--cover" src="img/block-1.webp" alt="" fetchpriority="high" loading="eager">
                     </picture>
                 </div>
             </div>
@@ -362,7 +358,7 @@
                         </div>
                         <div class="block-3__media block-3__media--video">
                             <div class="ui-video">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" poster="video/preview/unboxing.webp" autoplay loop muted playsinline>
+                                <video class="ui-video__media ui-video__media--cover" preload="none" width="280" height="158" poster="video/preview/unboxing.webp" autoplay loop muted playsinline>
                                     <source src="video/unboxing.webm" type="video/webm">
                                     <source src="video/unboxing.mp4" type="video/mp4">
                                 </video>
@@ -378,7 +374,7 @@
                         </div>
                         <div class="block-3__media block-3__media--video">
                             <div class="ui-video">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" poster="video/preview/review.webp" controlslist="nodownload" autoplay loop muted playsinline>
+                                <video class="ui-video__media ui-video__media--cover" preload="none" width="280" height="158" poster="video/preview/review.webp" controlslist="nodownload" autoplay loop muted playsinline>
                                     <source src="video/review.webm" type="video/webm">
                                     <source src="video/review.mp4" type="video/mp4">
                                 </video>
@@ -394,7 +390,7 @@
                         </div>
                         <div class="block-3__media block-3__media--video">
                             <div class="ui-video">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" poster="video/preview/feedback.webp" controlslist="nodownload" autoplay loop muted playsinline>
+                                <video class="ui-video__media ui-video__media--cover" preload="none" width="280" height="158" poster="video/preview/feedback.webp" controlslist="nodownload" autoplay loop muted playsinline>
                                     <source src="video/feedback.webm" type="video/webm">
                                     <source src="video/feedback.mp4" type="video/mp4">
                                 </video>
@@ -410,7 +406,7 @@
                         </div>
                         <div class="block-3__media block-3__media--video">
                             <div class="ui-video">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" poster="video/preview/before-after.webp" controlslist="nodownload" autoplay loop muted playsinline>
+                                <video class="ui-video__media ui-video__media--cover" preload="none" width="280" height="158" poster="video/preview/before-after.webp" controlslist="nodownload" autoplay loop muted playsinline>
                                     <source src="video/before-after.webm" type="video/webm">
                                     <source src="video/before-after.mp4" type="video/mp4">
                                 </video>
@@ -426,7 +422,7 @@
                         </div>
                         <div class="block-3__media block-3__media--video">
                             <div class="ui-video">
-                                <video class="ui-video__media ui-video__media--cover"  width="280" height="158" poster="video/preview/using-product.webp" controlslist="nodownload" autoplay loop muted playsinline>
+                                <video class="ui-video__media ui-video__media--cover" preload="none" width="280" height="158" poster="video/preview/using-product.webp" controlslist="nodownload" autoplay loop muted playsinline>
                                     <source src="video/using-product.webm" type="video/webm">
                                     <source src="video/using-product.mp4" type="video/mp4">
                                 </video>
@@ -1392,10 +1388,10 @@
             </div>
         </div>
     </footer>
-    <script src="js/block-6.js" defer></script>
-    <script src="js/block-8.js" defer></script>
-    <script src="js/form.js" defer></script>
-    <script src="js/submit-btn.js"></script>
+    <script src="js/block-6.min.js" defer></script>
+    <script src="js/block-8.min.js" defer></script>
+    <script src="js/form.min.js" defer></script>
+    <script src="js/submit-btn.min.js"></script>
     <script type="module" src="js/block-11.js" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
