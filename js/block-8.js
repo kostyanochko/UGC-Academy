@@ -1,33 +1,41 @@
-document.querySelectorAll('.ui-spoiler').forEach(spoiler => {
-    const summary = spoiler.querySelector('summary');
-    const contentWrapper = spoiler.querySelector('.ui-spoiler__content-wrapper');
-    
-    // Проверка наличия элементов
-    if (!summary || !contentWrapper) return;
-
-    // Инициализация
-    spoiler.style.height = `${summary.offsetHeight}px`;
-
-    summary.addEventListener('click', async (e) => {
+const accordionInit = () => {
+    const details = document.querySelectorAll('details.ui-spoiler');
+  
+    details.forEach(detail => {
+      const summary = detail.querySelector('summary');
+      const contentWrapper = detail.querySelector('.ui-spoiler__content-wrapper');
+  
+      // Инициализация при загрузке
+      if (detail.hasAttribute('open') && contentWrapper) {
+        contentWrapper.style.maxHeight = 'none';
+      }
+  
+      summary.addEventListener('click', (e) => {
         e.preventDefault();
         
-        if (spoiler.open) {
-            // Анимация закрытия (300ms)
-            spoiler.classList.add('closing');
+        // Переключаем текущий аккордеон
+        if (detail.open) {
+          if (contentWrapper) {
             contentWrapper.style.maxHeight = '0';
-            contentWrapper.style.opacity = '0';
-            await new Promise(r => setTimeout(r, 300));
-            spoiler.style.height = `${summary.offsetHeight}px`;
-            spoiler.removeAttribute('open');
-            spoiler.classList.remove('closing');
+          }
+          setTimeout(() => detail.removeAttribute('open'), 300);
         } else {
-            // Анимация открытия (500ms)
-            spoiler.setAttribute('open', '');
+          detail.setAttribute('open', '');
+          
+          if (contentWrapper) {
+            // Временно показываем для вычисления высоты
+            contentWrapper.style.maxHeight = 'none';
             const contentHeight = contentWrapper.scrollHeight;
-            spoiler.style.height = `${summary.offsetHeight + contentHeight}px`;
-            contentWrapper.style.maxHeight = `${contentHeight}px`;
-            contentWrapper.style.opacity = '1';
-            await new Promise(r => setTimeout(r, 500));
+            contentWrapper.style.maxHeight = '0';
+            
+            // Запускаем анимацию
+            requestAnimationFrame(() => {
+              contentWrapper.style.maxHeight = `${contentHeight}px`;
+            });
+          }
         }
+      });
     });
-});
+  };
+  
+  document.addEventListener('DOMContentLoaded', accordionInit);
