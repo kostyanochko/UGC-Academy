@@ -232,7 +232,6 @@ body {
     margin-right: 4px;
     margin-left: 4px;
     padding-top: 48px;
-    padding-bottom: 20px;
     border-radius: 20px;
     color: var(--text-main-color);
     background-color: var(--bg-secondary-color);
@@ -270,6 +269,7 @@ body {
     grid-row: 3 / 4;
     grid-column: 1 / 2;
     margin: 0 auto 0;
+    display: block;
 }
 
 .ui-picture {
@@ -1596,7 +1596,6 @@ textarea.ui-field__input {
     }
 
     .block-1__block{
-        padding-bottom: 36px;
         border-radius: 32px;
     }
 
