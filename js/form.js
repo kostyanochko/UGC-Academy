@@ -193,6 +193,96 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
+    async function sendToCRM(formData) {
+        try {
+            console.log('Sending to CRM:', formData);    
+            const response = await fetch('https://api.crm.com/leads', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer YOUR_API_KEY'
+                },
+                body: JSON.stringify(formData)
+            });
+            console.log('CRM response status:', response.status);  
+            return true;
+        } catch (error) {
+                console.error('Error sending to CRM:', error);
+                return false;
+        }
+    }
+
+    // Функция для сохранения в Google Sheets
+    function backupToGoogleSheets(formData) {
+        return new Promise((resolve, reject) => {
+          const callbackName = 'jsonp_callback_' + Math.random().toString(36).substr(2, 9);
+          const scriptId = 'jsonp_script_' + callbackName;
+      
+          // Удаляем предыдущие callback и script если существуют
+          if (window[callbackName]) {
+            delete window[callbackName];
+          }
+          const oldScript = document.getElementById(scriptId);
+          if (oldScript) {
+            document.body.removeChild(oldScript);
+          }
+      
+          // Создаем URL с параметрами
+          const url = new URL('https://script.google.com/macros/s/AKfycbzVLPTcERrAr4TehFXdcgcH_gW57jCC8s3mpmb92fPExDFOCcGP6cALQMJw-t0HceO9/exec');
+          url.searchParams.append('callback', callbackName);
+          
+          // Добавляем данные в URL (для GET запроса)
+          for (const key in formData) {
+            if (formData.hasOwnProperty(key)) {
+              url.searchParams.append(key, formData[key]);
+            }
+          }
+      
+          // Создаем callback функцию
+          window[callbackName] = (response) => {
+            // Очистка
+            delete window[callbackName];
+            const script = document.getElementById(scriptId);
+            if (script) {
+              document.body.removeChild(script);
+            }
+      
+            // Обработка ответа
+            if (response && response.success) {
+              resolve(response);
+            } else {
+              reject(new Error(response.error || 'Unknown server error'));
+            }
+          };
+      
+          // Создаем script элемент
+          const script = document.createElement('script');
+          script.id = scriptId;
+          script.src = url.toString();
+          
+          // Обработка ошибок загрузки
+          script.onerror = () => {
+            delete window[callbackName];
+            reject(new Error('Failed to load the script'));
+          };
+          
+          document.body.appendChild(script);
+      
+          // Таймаут на случай если сервер не ответит
+          setTimeout(() => {
+            if (window[callbackName]) {
+              delete window[callbackName];
+              const script = document.getElementById(scriptId);
+              if (script) {
+                document.body.removeChild(script);
+              }
+              reject(new Error('Request timeout'));
+            }
+          }, 10000); // 10 секунд таймаут
+        });
+      }
+
     // Обработка отправки формы
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -213,17 +303,21 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.querySelector('.ui-button__text').style.visibility = 'hidden';
 
             const formData = {
-                name: nameInput.value.trim(),
+                name: nameInput.value.trim().replace(/[&<>"'`=\/]/g, ''),
                 phone: '+52' + getDigitsFromInput(),
-                instagram: form.querySelector('input[name="instagram"]').value.trim() || 'No especificado',
+                instagram: form.querySelector('input[name="instagram"]').value.trim() || 'Not specified',
                 reason: reasonInput.value.trim(),
-                date: new Date().toISOString()
+                date: new Date().toISOString().slice(0, 19).replace('T', ' ')
             };
 
-            // Здесь должна быть реальная отправка
-            console.log('Form data:', formData);
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            
+            // Пытаемся отправить в CRM (основной способ)
+            const crmSuccess = await sendToCRM(formData);
+
+            // Всегда сохраняем в Google Sheets как резервный вариант
+            await backupToGoogleSheets(formData).catch(e => {
+                console.error('Backup also failed:', e);
+              });
+
             const successMessage = document.querySelector('.message__success');
             successMessage.style.display = 'flex';
             form.reset();
