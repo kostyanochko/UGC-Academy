@@ -20,13 +20,6 @@
         </div>
     </div>
     <main>
-        <div class="submit__bar">
-            <a href="#form" class="ui-button submit__button">
-                <span class="ui-button__text t t--1">
-                    Deja tu solicitud de inscripción
-                </span>
-            </a>
-        </div>
         <section class="block-1 block">
             <div class="block-1__block">
                 <div class="block-1__wrapper ui-container">
@@ -36,6 +29,13 @@
                     <strong class="block-1__subtitle t t--1">
                         Fácil. Sin oficina. Sin seguidores. ¡Las marcas ya están esperando tu contenido!
                     </strong>
+                    <div class="submit__bar">
+                        <a href="#form" class="ui-button submit__button">
+                            <span class="ui-button__text t t--1">
+                                Deja tu solicitud de inscripción
+                            </span>
+                        </a>
+                    </div>
                     <picture class="block-1__pic ui-picture">
                         <img class="ui-picture__img ui-picture__img--cover" src="img/block-1.png" alt="">
                     </picture>
@@ -1123,13 +1123,6 @@
                 type: 'fraction',
                 renderFraction: function(currentClass, totalClass) {
                     return `<span class="${currentClass}"></span>/<span class="${totalClass}"></span>`;
-                }
-            },
-            breakpoints: {
-                1280: {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                    pagination: false
                 }
             }
         });
