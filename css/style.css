@@ -1085,6 +1085,13 @@ strong {
     border-radius: 12px;
 }
 
+.block-11__title{
+    color: var(--text-alt-color);
+    border-radius: 20px;
+    background-color: var(--bg-accent-color);
+    padding: 12px;
+    width: auto;
+}
 .block-11__info {
     text-align: center;
     margin-bottom: 8px;
