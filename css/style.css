@@ -1755,6 +1755,7 @@ textarea.ui-field__input {
 
     .ui-field__name{
         font-size: 20px;
+        line-height: 26px;
     }
 }
 
