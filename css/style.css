@@ -266,10 +266,10 @@ body {
 .block-1__pic {
     position: relative;
     width: calc(100% + 32px);
-    height: unset;
+    height: auto;
     grid-row: 3 / 4;
     grid-column: 1 / 2;
-    margin: 0 -16px -64px;
+    margin: 0 auto 0;
 }
 
 .ui-picture {
@@ -384,6 +384,10 @@ img {
     margin-bottom: 8px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.block-4__picture img{
+    width: auto;
 }
 
 .ui-picture--contain {
@@ -993,7 +997,7 @@ strong {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 180px;
+    height: auto;
 }
 
 .block-9__slider-subtitle{
@@ -1460,13 +1464,10 @@ textarea.ui-field__input {
         text-align: center;
     }
     .block-1__pic {
-        margin: 0 -16px -64px;
-        padding-top: 99%; 
+        margin: 0 auto 0;
     }
     .block-1__pic img {
-        position: absolute;
-        top: 0;
-        left: 0;
+        position: relative;
     }
     .block-3__media video{
         position: absolute;

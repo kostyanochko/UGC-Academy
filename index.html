@@ -136,7 +136,7 @@
         .block-1__pic {
             position: relative;
             width: calc(100% + 32px);
-            height: unset;
+            height: auto;
             grid-row: 3 / 4;
             grid-column: 1 / 2;
             margin: 0 -16px -64px;
@@ -166,13 +166,14 @@
                 text-align: center;
             }
             .block-1__pic {
-                margin: 0 -16px -64px;
-                padding-top: 99%; 
+                margin: 0 auto 0;
+                max-width: 450px; 
             }
             .block-1__pic img {
                 position: absolute;
                 top: 0;
                 left: 0;
+                height: 390px;
             }
         }
         
