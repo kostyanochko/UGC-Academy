@@ -8,14 +8,14 @@
     --text-secondary-color: #666;
     --icon-main-color: #fff;
     --icon-secondary-color: #8f8f8f;
-    --accent-brand-color: #8edb29;
+    --accent-brand-color: #5433e7;
     --accent-danger-color: #d5401f;
     --accent-danger-secondary-color: #fdf0ed;
     --tooltip-bg-color: #fff705;
     --stroke-main-color: #e0e0e0;
 }
 
-*, ::after, ::before {
+*, ::after, ::before { 
     box-sizing: inherit;
 }
 
@@ -1101,6 +1101,7 @@ strong {
     padding: 6px 12px;
     border-radius: 20px;
     background-color: var(--accent-brand-color);
+    color: var(--text-alt-color);
 }
 
 .ui-picture__img {
