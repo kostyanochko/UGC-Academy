@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     form.setAttribute('novalidate', true);
     
     // Константы для маски телефона
-    const maskTemplate = '+52 (___) ___-____';
-    const editablePartStart = 5;
+    const maskTemplate = '+52 ___ ___ ____';
+    const editablePartStart = 4;
     let isPhoneActive = false;
 
     // Инициализация маски телефона
@@ -70,19 +70,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Активация поля телефона
     function activatePhoneField() {
-        phoneInput.value = maskTemplate;
-        phoneInput.setSelectionRange(editablePartStart, editablePartStart);
-        isPhoneActive = true;
+        if (!isPhoneActive) {
+            phoneInput.value = maskTemplate;
+            isPhoneActive = true;
+        }
+        // Устанавливаем курсор на первую редактируемую позицию
+        setTimeout(() => {
+            phoneInput.setSelectionRange(editablePartStart, editablePartStart);
+        }, 0);
         clearError(phoneInput);
     }
 
     // Обработчики событий для телефона
     function onPhoneClick() {
-        if (!isPhoneActive) activatePhoneField();
+        if (!isPhoneActive) {
+            activatePhoneField();
+        } else {
+            // Если поле уже активно, устанавливаем курсор в правильное место
+            const pos = Math.max(phoneInput.selectionStart, editablePartStart);
+            phoneInput.setSelectionRange(pos, pos);
+        }
     }
-
+    
     function onPhoneFocus() {
-        if (!isPhoneActive) activatePhoneField();
+        if (!isPhoneActive) {
+            activatePhoneField();
+        } else {
+            // Если поле уже активно, устанавливаем курсор в правильное место
+            const pos = Math.max(phoneInput.selectionStart, editablePartStart);
+            phoneInput.setSelectionRange(pos, pos);
+        }
     }
 
     function onPhoneBlur() {
@@ -107,10 +124,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         phoneInput.value = formatPhoneNumber(digits);
-        phoneInput.setSelectionRange(
-            getNextCursorPosition(selectionStart, digits.length),
-            getNextCursorPosition(selectionStart, digits.length)
-        );
+        
+        // Вычисляем новую позицию курсора
+        let newCursorPos = getNextCursorPosition(selectionStart, digits.length);
+        // Убеждаемся, что курсор не попадет в нередактируемую часть
+        newCursorPos = Math.max(newCursorPos, editablePartStart);
+        
+        setTimeout(() => {
+            phoneInput.setSelectionRange(newCursorPos, newCursorPos);
+        }, 0);
         
         clearError(phoneInput);
     }
