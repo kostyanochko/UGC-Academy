@@ -97,6 +97,13 @@ a {
     font-weight: 400;
 }
 
+.t--5 {
+    text-decoration: underline;
+    color: var(--text-secondary-color);
+    font-size: 16px;
+    line-height: 22px;
+}
+
 .f {
     line-height: 20px;
     font-weight: 400;
@@ -1150,7 +1157,9 @@ strong {
     --item-indent: 6px;
 }
 
-
+.ui-footer-contacts__docs {
+    margin-top: 15px;
+}
 
 .application-form__block {
     margin-left: -16px;
@@ -1856,5 +1865,13 @@ textarea.ui-field__input {
         margin-top: 8px;
         font-size: 14px;
         line-height: 16px;
+    }
+
+    .block-5__checkmark {
+        padding-top: 5px;
+    }
+
+    .block-6__icon-2{
+        padding-top: 5px;
     }
 }
