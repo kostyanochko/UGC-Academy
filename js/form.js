@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
       
           // Создаем URL с параметрами
-          const url = new URL('https://script.google.com/macros/s/AKfycbzVLPTcERrAr4TehFXdcgcH_gW57jCC8s3mpmb92fPExDFOCcGP6cALQMJw-t0HceO9/exec');
+          const url = new URL('https://script.google.com/macros/s/AKfycbxnZgRu1dm7duyVRvt6j39KX9ztlZZqV21suCipSzIOtqTwnz6SWF6sOA4Ozwy2AvBINg/exec');
           url.searchParams.append('callback', callbackName);
           
           // Добавляем данные в URL (для GET запроса)
