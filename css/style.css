@@ -315,6 +315,10 @@ img {
     overflow: hidden;
 }
 
+.block-2__subtitle{
+    margin-bottom: 5px;
+}
+
 .block-3{
     overflow: hidden;
 }
@@ -865,23 +869,6 @@ strong {
     content: "";
 }
 
-.block-8__group-title{
-    position: absolute;
-    top: -12px;
-    left: 20px;
-    padding: 6px 14px;
-    border-radius: 12px;
-    background: var(--text-main-color);
-    color: var(--bg-main-color);
-    font-size: 16px;
-    line-height: 18px;
-    font-weight: 500;
-    z-index: 1;
-    transform: none;
-    margin: 0;
-
-}
-
 .block-9__media {
     position: relative;
     display: flex;
@@ -930,6 +917,7 @@ strong {
     color: rgba(255,255,255,0.9);
     font-size: 16px;
     line-height: 1.4;
+    margin-bottom: 8px;
 }
 
 .block-9__wrapper .block-6__title-2{
@@ -1099,9 +1087,15 @@ strong {
     padding: 12px;
     width: auto;
 }
+
+.block-11__content{
+    margin-bottom: 16px;
+}
+
 .block-11__info {
     text-align: center;
     margin-bottom: 8px;
+    margin-top: 8px;
 }
 
 .block-11__timer {
